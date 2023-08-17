@@ -1,0 +1,25 @@
+<?php
+    $db_hostname = "127.0.0.1";
+    $db_username = "root";
+    $db_password = "";
+    $db_name = "test";
+
+    $conn = mysql_connect($db_hostname,$db_name,$db_password,$db_username);
+    if(!$conn) {
+        echo"connectiopn failed:".mysqli_connect_error();
+        exit;    
+    }
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $password = $_POST['password'];
+
+
+    $sql = "INSERT INTO users(name,email, password) VALUES ($name, $email, $password)";
+
+    $result = mysqli_query($conn,$sql);
+    if(!$result)
+    {
+        echo"Rgistration successfully";
+        mysqli_close($conn);
+    }
+?>
